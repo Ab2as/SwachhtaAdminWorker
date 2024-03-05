@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0-152.0.dev <4.0.0'
+  sdk: '>= 3.2.6 '
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -38,6 +38,15 @@ dependencies:
   image_picker: ^1.0.5
   firebase_core: ^2.25.4
   cloud_firestore: ^4.15.4
+  line_awesome_flutter: ^2.0.0
+  fluid_bottom_nav_bar: ^1.4.0
+  get: ^4.6.6
+  connectivity_plus: ^5.0.2
+  hive: ^2.2.3
+  transition: ^2.0.2
+  provider: ^6.1.2
+  shimmer: ^3.0.0
+  webview_flutter: ^4.7.0
 
 
 dev_dependencies:

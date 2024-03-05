@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:swachhta_app2/worker/screen/tabs.dart';
 import 'package:swachhta_app2/worker/submit.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+ // WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SubmitScreen(),
+      home: const TabsScreen(),
     );
   }
 }
