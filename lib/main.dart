@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swachhta_app2/splash_screen.dart';
+import 'package:swachhta_app2/auth/login.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }
