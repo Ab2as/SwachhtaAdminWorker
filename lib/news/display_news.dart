@@ -30,15 +30,20 @@ class _NewsWidget extends State<NewsWidget>{
       controller: PageController(viewportFraction: 0.8),
       onPageChanged: (index) => setState(() => _index = index),
       itemBuilder: (context, index) {
-        final newsItem= dummyNews[index];
+
         return AnimatedPadding(
           duration: const Duration(milliseconds: 400),
           curve: Curves.fastOutSlowIn,
           padding: EdgeInsets.all(_index == index ? 0.0 : 8.0),
           child: Card(
+            clipBehavior: Clip.antiAlias ,
             elevation: 4,
-            color: Colors.white10,
-            child: Center(child: NewsTile(article: newsItem)),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(color: Colors.white70, width: 1),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            //color: Colors.white10,
+            child: Center(child: NewsTile(article: dummyNews[index])),
           ),
         );
       },

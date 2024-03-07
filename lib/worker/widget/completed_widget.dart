@@ -3,19 +3,19 @@ import 'package:swachhta_app2/data/dummy_data.dart';
 import 'package:swachhta_app2/news/news_tile.dart';
 
 
-class PendingWidget extends StatefulWidget{
-  PendingWidget({super.key, required this.itemCount});
+class CompleteWidget extends StatefulWidget{
+  CompleteWidget({super.key, required this.itemCount});
 
   var itemCount;
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _PendingWidget();
+    return _CompleteWidget();
   }
 }
 
-class _PendingWidget extends State<PendingWidget>{
+class _CompleteWidget extends State<CompleteWidget>{
   var _index=0;
 
   @override
@@ -33,7 +33,70 @@ class _PendingWidget extends State<PendingWidget>{
           child: Card(
             elevation: 4,
             color: Colors.white10,
-            child: Center(child: Text("Card $_index")),
+            child: Center(child: Container(
+
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 157, 181, 222),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                          child: Text(
+                            "Overflow of Sewage or Storm Water reported",
+                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            softWrap: true,
+                          ),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              "View Status",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 38, 73, 133)),
+                            ))
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      "ID: 123456",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Divider(
+                    height: 2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Row(
+                      children: [
+                        Icon(Icons.location_on),
+                        Text(
+                          "Kanpur",
+                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),),
           ),
         );
       },

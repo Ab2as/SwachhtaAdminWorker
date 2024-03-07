@@ -28,93 +28,37 @@ class _NewsTile extends State<NewsTile> {
           ),
         );
       },
-      child: Stack(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(
             width: double.infinity,
             child: Opacity(
-              opacity: 0.6,
+              opacity: 0.8,
               child: Image.network(
                 widget.article.urlToImage,
+                height: 160,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Positioned(
-            top: 140,
-            child: Text(
+          Expanded(
+            child: Padding(
+              padding:const EdgeInsets.only(left: 10, right: 8, top: 4),
+              child:Text(
               widget.article.title,
               softWrap: true,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
-            ),
-          ),
-          Positioned(
-            top: 160,
-            child: Text(
-              widget.article.description,
-              softWrap: true,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
+            ),)
           ),
         ],
       ),
     );
   }
 }
-
-/*
-Container(
-
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            alignment: Alignment.topCenter,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6))),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-
-                const SizedBox(
-                  height: 12,
-                ),
-              ],
-            ),
-          )),
-
-  Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Text(
-                    widget.article.title,
-                    softWrap: true,
-                    overflow: TextOverflow.fade,
-                    maxLines: 3,
-                  ),
-                ),
-                Expanded(
-                  child: Text(widget.article.description),
-                ),
-              ]),
-        ],
-      ),
-    )
- */

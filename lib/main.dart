@@ -1,10 +1,8 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app2/worker/screen/tabs.dart';
-import 'package:swachhta_app2/worker/submit.dart';
+import 'package:swachhta_app2/splash_screen.dart';
 
-void main() async {
- // WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const TabsScreen(),
+      home: SplashScreen(),
     );
   }
 }

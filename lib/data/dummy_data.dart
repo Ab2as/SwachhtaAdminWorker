@@ -1,55 +1,93 @@
+import 'package:flutter/material.dart';
+import 'package:swachhta_app2/data/department_model.dart';
 import 'package:swachhta_app2/news/news_model.dart';
+
+const dept = [
+  Department(
+    id: 'd1',
+    title: 'Clean',
+    color: Colors.purple,
+  ),
+  Department(
+    id: 'd2',
+    title: 'Animal',
+    color: Colors.red,
+  ),
+  Department(
+    id: 'd3',
+    title: 'Water',
+    color: Colors.orange,
+  ),
+  Department(
+    id: "d4",
+    title: 'Sewage',
+    color: Colors.amber,
+  ),
+  Department(
+    id: "d5",
+    title: 'Road',
+    color: Colors.blue,
+  ),
+  Department(
+    id: "d6",
+    title: 'Garbage',
+    color: Colors.green,
+  ),
+];
 
 final dummyNews = [
   Article(
-    id:"1",
-    title:
-        "Swachhata Pakhwada 2024: A Renewed Commitment Towards a Clean India",
+    id: "1",
+    title: "Students join ‘Swachhta Hi Seva Abhiyan’, to clean school, roads",
     description:
         "The Swachh Bharat Mission continues its efforts with the ongoing Swachhata Pakhwada (Cleanliness Fortnight) from February 1st to 15th, 2024. This year's theme focuses on 'Garbage Free India,' encouraging waste segregation and responsible waste management practices.",
     content:
         "The campaign involves various activities, including cleanliness drives, awareness campaigns, workshops on waste management, and community participation initiatives. Schools, government offices, and NGOs are actively leading these efforts to build a cleaner and healthier India.",
-    urlToImage: "http://www.eoidushanbe.gov.in/docs/swa-25-01-2024%20(1).jpeg",
-    articleUrl: "https://www.eoidushanbe.gov.in/news_detail/?newsid=255",
+    urlToImage:
+        "https://static.toiimg.com/thumb/msid-104078592,imgsize-82704,width-400,resizemode-4/104078592.jpg",
+    articleUrl:
+        "https://timesofindia.indiatimes.com/city/ranchi/students-join-swachhta-hi-seva-abhiyan-to-clean-school-roads/articleshow/104078593.cms",
   ),
   Article(
-    id: '2' ,
+    id: '2',
     title:
-        "Addressing the Challenges of Swachh Bharat Mission: A Call for Transparency and Sustainability",
+        "Swachh Bharat Abhiyan Must Be Taken As Social Movement: Top Court Judge",
     description:
         "While the Swachh Bharat Mission has achieved significant progress in improving sanitation facilities, challenges remain, including allegations of corruption and ensuring long-term sustainability of the program.",
     content:
         "Reports of misused funds and poorly constructed toilets highlight the need for stricter transparency and accountability measures. Additionally, ensuring continued usage and maintenance of toilets after construction is crucial for the mission's lasting success.",
     urlToImage:
-        "https://m.media-amazon.com/images/I/61+gBQlHlLL._AC_SX425_.jpg",
-    articleUrl: "https://en.wikipedia.org/wiki/Swachh_Bharat_Mission",
+        "https://c.ndtvimg.com/2022-10/tthv9vd8_supreme-court-india-generic-pti_625x300_10_October_22.jpg",
+    articleUrl:
+        "https://www.ndtv.com/india-news/swachh-bharat-abhiyan-must-be-taken-as-social-movement-top-court-judge-4442142",
   ),
   Article(
-    id:'3',
-    title:
-        " Innovation Drives Progress: Technology and Community Engagement in Swachh Bharat Mission",
+    id: '3',
+    title: " These Two Indian Cities Voted Cleanest This Year",
     description:
         "Despite the challenges, innovative solutions are emerging to address the issues faced by the Swachh Bharat Mission. These include utilizing technology for waste management, such as mobile apps for waste collection, and promoting community engagement through local initiatives and partnerships.",
     content:
         "Examples include startups developing biodegradable waste disposal solutions and community-led projects fostering awareness and encouraging behavioral change. These efforts offer hope for a cleaner and more sustainable future for India.",
     urlToImage:
-        "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*IulNb_g42XTvSLsP",
-    articleUrl: "https://blog.mygov.in/ebook/success-stories-on-swachh-bharat/",
+        "https://c.ndtvimg.com/2024-01/6kj1feio_indore_625x300_06_January_24.jpg",
+    articleUrl:
+        "https://www.ndtv.com/india-news/spick-and-span-indore-is-indias-cleanest-city-for-7th-consecutive-year-4841412",
   ),
   Article(
-    id:'4',
+    id: '4',
     title:
-        "Reaching Every Corner: Overcoming Infrastructure Challenges in Rural India's Swachh Bharat Mission",
+        "All 6,650 Villages Of Jammu And Kashmir Declared Open Defecation Free Plus",
     description:
-        "Expanding sanitation facilities to rural areas poses a unique set of challenges, including limited infrastructure, lack of awareness, and geographical constraints. The Swachh Bharat Mission strives to address these issues through various initiatives.",
+        " This achievement is a significant milestone as it goes beyond constructing and use of toilets towards cleanliness by managing greywater and solid waste in each village, they said.",
     content:
-        "Efforts include constructing household toilets, promoting community-led sanitation projects, and investing in infrastructure development like waste collection and disposal systems. Overcoming these hurdles is crucial for achieving equitable access to sanitation across India.",
+        "In a significant milestone for Jammu and Kashmir under the Swachh Bharat Mission, all of its 6,650 villages have been declared open defecation-free plus model, officials said here on Saturday. ",
     urlToImage:
-        "https://neweralive.na/storage/images/2024/january-2024/rural.gif",
-    articleUrl: " https://swachhbharatmission.gov.in/",
+        "https://c.ndtvimg.com/2019-10/qg39gk78_kashmir-generic-journey-basket_625x300_13_October_19.jpg",
+    articleUrl:
+        "https://www.ndtv.com/india-news/all-6-650-villages-of-jammu-and-kashmir-declared-open-defecation-free-plus-4437612",
   ),
   Article(
-    id:'5',
+    id: '5',
     title:
         "A Healthier Nation: The Link Between Swachh Bharat Mission and Public Health",
     description:

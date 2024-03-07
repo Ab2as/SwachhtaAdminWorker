@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:swachhta_app2/worker/utils/app_image_pick.dart';
+import 'package:swachhta_app2/worker/utils/details.dart';
 
 class SubmitScreen extends StatefulWidget {
   const SubmitScreen({super.key});
@@ -33,7 +34,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
                 colors: [Color.fromARGB(255, 14, 47, 68), Colors.black],
                 begin: Alignment.bottomRight,
@@ -46,60 +47,23 @@ class _SubmitScreenState extends State<SubmitScreen> {
                 height: 250,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  // color: Color.fromARGB(255, 55, 62, 118),
                   gradient: const LinearGradient(colors: [
-                    Color.fromARGB(255, 32, 38, 82),
-                    Color.fromARGB(255, 142, 138, 138),
+                    Color.fromARGB(255, 55, 65, 140),
+                    Color.fromARGB(255, 226, 212, 212),
                   ], begin: Alignment.topLeft, end: Alignment.bottomRight),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(width: 1),
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Name : ",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Abbas",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Subject : ",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "Clean",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "Date : ",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            "12/12/24",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
+                      Details(title: "Name: ", content: "Abbas"),
+                      Details(title: "Subject: ", content: "Clean"),
+                      Details(title: "Date: ", content: "12/12/2024"),
+                      Details(title: "Description: ", content: "Cleanliness"),
+                      Details(title: "Address: ", content: "Kanpur"),
                     ],
                   ),
                 ),
@@ -119,6 +83,22 @@ class _SubmitScreenState extends State<SubmitScreen> {
                     ),
                   )
                 : const Text("No Image Selected"),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+              child: const Text(
+                "Submit",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+              ),
+            ),
           ],
         ),
       ),
@@ -127,7 +107,7 @@ class _SubmitScreenState extends State<SubmitScreen> {
         onPressed: () {
           pickImage(ImageSource.camera);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
