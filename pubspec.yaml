@@ -50,6 +50,9 @@ dependencies:
   animated_text_kit: ^4.2.2
   shared_preferences: ^2.2.2
   dob_input_field: ^2.0.0
+  firebase_auth: ^4.17.7
+  firebase_storage: ^11.6.7
+
 
 
 

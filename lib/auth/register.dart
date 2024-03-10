@@ -2,8 +2,10 @@
 // import 'package:flutter_app/screens/home.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import 'package:swachhta_app2/auth/profile_fill_screen.dart';
+import 'package:swachhta_app2/controller/auth_controller.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -21,46 +23,48 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   // our form key
   final _formKey = GlobalKey<FormState>();
   // editing Controller
-  final firstNameEditingController = new TextEditingController();
-  final secondNameEditingController = new TextEditingController();
+  final userNameEditingController = new TextEditingController();
+  // final secondNameEditingController = new TextEditingController();
   final emailEditingController = new TextEditingController();
   final passwordEditingController = new TextEditingController();
   final confirmPasswordEditingController = new TextEditingController();
 
+  AuthController authController = Get.put(AuthController());
+
   @override
   Widget build(BuildContext context) {
     //first name field
-    final firstNameField = TextFormField(
-        autofocus: false,
-        controller: firstNameEditingController,
-        keyboardType: TextInputType.name,
-        validator: (value) {
-          RegExp regex = new RegExp(r'^.{3,}$');
-          if (value!.isEmpty) {
-            return ("First Name cannot be Empty");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid name(Min. 3 Character)");
-          }
-          return null;
-        },
-        onSaved: (value) {
-          firstNameEditingController.text = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.account_circle),
-          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "First Name",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+    // final firstNameField = TextFormField(
+    //     autofocus: false,
+    //     controller: firstNameEditingController,
+    //     keyboardType: TextInputType.name,
+    //     validator: (value) {
+    //       RegExp regex = new RegExp(r'^.{3,}$');
+    //       if (value!.isEmpty) {
+    //         return ("First Name cannot be Empty");
+    //       }
+    //       if (!regex.hasMatch(value)) {
+    //         return ("Enter Valid name(Min. 3 Character)");
+    //       }
+    //       return null;
+    //     },
+    //     onSaved: (value) {
+    //       firstNameEditingController.text = value!;
+    //     },
+    //     textInputAction: TextInputAction.next,
+    //     decoration: InputDecoration(
+    //       prefixIcon: const Icon(Icons.account_circle),
+    //       contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+    //       hintText: "First Name",
+    //       border: OutlineInputBorder(
+    //         borderRadius: BorderRadius.circular(10),
+    //       ),
+    //     ));
 
     //second name field
-    final secondNameField = TextFormField(
+    final usernameField = TextFormField(
         autofocus: false,
-        controller: secondNameEditingController,
+        controller: userNameEditingController,
         keyboardType: TextInputType.name,
         validator: (value) {
           if (value!.isEmpty) {
@@ -69,13 +73,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           return null;
         },
         onSaved: (value) {
-          secondNameEditingController.text = value!;
+          userNameEditingController.text = value!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.account_circle),
           contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Second Name",
+          hintText: "Name",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -98,7 +102,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           return null;
         },
         onSaved: (value) {
-          firstNameEditingController.text = value!;
+          emailEditingController.text = value!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
@@ -125,7 +129,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           }
         },
         onSaved: (value) {
-          firstNameEditingController.text = value!;
+          passwordEditingController.text = value!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
@@ -172,8 +176,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           minWidth: MediaQuery.of(context).size.width,
           onPressed: () {
             // signUp(emailEditingController.text, passwordEditingController.text);
+
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const ProfileScreen()));
+            authController.registerUser(userNameEditingController.text,
+                emailEditingController.text, passwordEditingController.text);
           },
           child: const Text(
             "SignUp",
@@ -214,10 +221,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           "assets/logo/logo2.png",
                           fit: BoxFit.contain,
                         )),
-                    const SizedBox(height: 45),
-                    firstNameField,
+                    // const SizedBox(height: 45),
+                    // firstNameField,
                     const SizedBox(height: 20),
-                    secondNameField,
+                    usernameField,
                     const SizedBox(height: 20),
                     emailField,
                     const SizedBox(height: 20),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:swachhta_app2/auth/login.dart';
+import 'package:swachhta_app2/controller/auth_controller.dart';
 import 'package:swachhta_app2/profile/profile_menu_widget.dart';
 import 'package:swachhta_app2/profile/update_profile_screen.dart';
 
@@ -10,6 +11,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
@@ -19,9 +21,7 @@ class ProfileScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-            }
-            ,
+            onPressed: () {},
             icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon),
           ),
         ],
@@ -109,8 +109,11 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       confirm: Expanded(
                         child: ElevatedButton(
-                          onPressed:
-                              () {}, //=>AuthenticationRepository.instance.logout(),
+                          onPressed: () {
+                            // authController.signOut();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => LoginScreen()));
+                          }, //=>AuthenticationRepository.instance.logout(),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.redAccent,
                               side: BorderSide.none),

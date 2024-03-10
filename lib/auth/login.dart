@@ -1,7 +1,10 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:swachhta_app2/auth/profile_fill_screen.dart';
+import 'package:get/get.dart';
+import 'package:swachhta_app2/admin/screen/tab_screen_admin.dart';
 import 'package:swachhta_app2/auth/register.dart';
+import 'package:swachhta_app2/controller/auth_controller.dart';
+import 'package:swachhta_app2/worker/screen/tabs.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,11 +21,29 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
+  AuthController authController = Get.put(AuthController());
+
   // firebase
   // final _auth = FirebaseAuth.instance;
 
   // string for displaying the error Message
   String? errorMessage;
+
+  // login(String email, String password) async {
+  //   if (email == "" && password == "") {
+  //     return UiHelper.CustomAlertBox(context, "Enter Required Fields");
+  //   } else {
+  //     UserCredential? usercredential;
+  //     try {
+  //       usercredential = await FirebaseAuth.instance
+  //           .signInWithEmailAndPassword(email: email, password: password)
+  //           .then((value) => Navigator.of(context)
+  //               .push(MaterialPageRoute(builder: (context) => TabsScreen())));
+  //     } on FirebaseAuthException catch (ex) {
+  //       return UiHelper.CustomAlertBox(context, ex.code.toString());
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          prefixIcon: const Icon(Icons.mail),
+          contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Email",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -57,49 +78,58 @@ class _LoginScreenState extends State<LoginScreen> {
 
     //password field
     final passwordField = TextFormField(
-        autofocus: false,
-        controller: passwordController,
-        obscureText: true,
-        validator: (value) {
-          RegExp regex = new RegExp(r'^.{6,}$');
-          if (value!.isEmpty) {
-            return ("Password is required for login");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password(Min. 6 Character)");
-          }
-        },
-        onSaved: (value) {
-          passwordController.text = value!;
-        },
-        textInputAction: TextInputAction.done,
-        decoration: InputDecoration(
-          prefixIcon: Icon(Icons.vpn_key),
-          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Password",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
+      autofocus: false,
+      controller: passwordController,
+      obscureText: true,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+      },
+      onSaved: (value) {
+        passwordController.text = value!;
+      },
+      textInputAction: TextInputAction.done,
+      decoration: InputDecoration(
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        hintText: "Password",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
 
     final loginButton = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
       color: Colors.redAccent,
       child: MaterialButton(
-          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          minWidth: MediaQuery.of(context).size.width,
-          onPressed: () {
-            // signIn(emailController.text, passwordController.text);
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
-          },
-          child: Text(
-            "Login",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-          )),
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+        minWidth: MediaQuery.of(context).size.width,
+        onPressed: () {
+          // signIn(emailController.text, passwordController.text);
+          if (_formKey.currentState!.validate()) {
+            if (emailController.text == "abbas@gmail.com" &&
+                passwordController.text == "abbas123") {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => TabsScreenAdmin()));
+            } else {
+              // login(emailController.text, passwordController.text);
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => TabsScreen()));
+              authController.loginUser(
+                  emailController.text, passwordController.text);
+            }
+          }
+        },
+        child: const Text(
+          "Login",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
 
     return Scaffold(
@@ -122,17 +152,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           "assets/logo/logo2.png",
                           fit: BoxFit.contain,
                         )),
-                    SizedBox(height: 45),
+                    const SizedBox(height: 45),
                     emailField,
-                    SizedBox(height: 25),
+                    const SizedBox(height: 25),
                     passwordField,
-                    SizedBox(height: 35),
+                    const SizedBox(height: 35),
                     loginButton,
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Don't have an account? "),
+                          const Text("Don't have an account? "),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -141,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       builder: (context) =>
                                           RegistrationScreen()));
                             },
-                            child: Text(
+                            child: const Text(
                               "SignUp",
                               style: TextStyle(
                                   color: Colors.redAccent,

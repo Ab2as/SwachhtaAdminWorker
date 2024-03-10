@@ -1,5 +1,6 @@
-import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:swachhta_app2/controller/profile_controller.dart';
 import 'package:swachhta_app2/worker/screen/tabs.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -11,16 +12,14 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   TextEditingController _fullname = TextEditingController();
-  TextEditingController _mobileno = TextEditingController();
-  // TextEditingController _dob = TextEditingController();
-  // TextEditingController _sex = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _pincode = TextEditingController();
-  TextEditingController _email = TextEditingController();
   TextEditingController _department = TextEditingController();
   String? selectedValue = null;
 
   final GlobalKey<FormState> formkey = GlobalKey();
+
+  ProfileController profileController = Get.put(ProfileController());
 
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
@@ -39,18 +38,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void dispose1() {
     _address.dispose();
-    super.dispose();
-  }
-
-  @override
-  void dispose2() {
-    _email.dispose();
-    super.dispose();
-  }
-
-  @override
-  void dispose3() {
-    _mobileno.dispose();
     super.dispose();
   }
 
@@ -109,43 +96,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             width: 0, style: BorderStyle.none)),
                   ),
                   validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$")
-                            .hasMatch(value!)) {
-                      return "Enter correct name";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: _mobileno,
-                  cursorColor: Colors.white,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.white.withOpacity(0.9)),
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.person_outline,
-                      color: Colors.white70,
-                    ),
-                    labelText: "Enter your mobile number",
-                    labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
-                    filled: true,
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    fillColor: Colors.white.withOpacity(0.3),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide:
-                          const BorderSide(width: 0, style: BorderStyle.none),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value!.isEmpty ||
-                        !RegExp(r"^[0-9]{10}$").hasMatch(value!)) {
-                      return "Enter correct mobile number";
+                    if (value!.isEmpty) {
+                      return "Enter name";
                     } else {
                       return null;
                     }
@@ -191,32 +143,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                DOBInputField(
-                  firstDate: DateTime(1900),
-                  lastDate: DateTime.now(),
-                  showLabel: true,
-                  showCursor: true,
-                  autovalidateMode: AutovalidateMode.always,
-                  fieldLabelText: "Enter your DOB",
-                  inputDecoration: InputDecoration(
-                    prefixIcon: const Icon(
-                      Icons.person_outline,
-                      color: Colors.white70,
-                    ),
-                    labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
-                    filled: true,
-                    floatingLabelBehavior: FloatingLabelBehavior.never,
-                    fillColor: Colors.white.withOpacity(0.3),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                      borderSide:
-                          const BorderSide(width: 0, style: BorderStyle.none),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
                 TextFormField(
                   controller: _address,
                   cursorColor: Colors.white,
@@ -236,15 +162,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         borderSide: const BorderSide(
                             width: 0, style: BorderStyle.none)),
                   ),
-                  // validator: (value) {
-                  //   if (value!.isEmpty ||
-                  //       !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}')
-                  //           .hasMatch(value!)) {
-                  //     return "Enter correct email address";
-                  //   } else {
-                  //     return null;
-                  //   }
-                  // },
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter address";
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 20,
@@ -283,7 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 TextFormField(
                   controller: _department,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.name,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white.withOpacity(0.9)),
                   decoration: InputDecoration(
@@ -302,22 +226,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             width: 0, style: BorderStyle.none)),
                   ),
                 ),
-
                 const SizedBox(
                   height: 10,
                 ),
-
-                // ElevatedButton(
-                //   onPressed: () {
-                //     print(_fullname.text);
-                //   },
-                //   child: Text("Submit"),
-                // ),
                 ElevatedButton(
                   onPressed: () async {
                     if (formkey.currentState!.validate()) {
                       String message;
-
+                      profileController.registerUser(
+                        _fullname.text,
+                        selectedValue.toString(),
+                        _address.text,
+                        _pincode.text,
+                        _department.text,
+                      );
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => TabsScreen(),
                       ));

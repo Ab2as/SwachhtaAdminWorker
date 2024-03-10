@@ -1,66 +1,26 @@
 {
   "project_info": {
-    "project_number": "268830914612",
-    "firebase_url": "https://swachhtaapp-969b6-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "swachhtaapp-969b6",
-    "storage_bucket": "swachhtaapp-969b6.appspot.com"
+    "project_number": "973486231842",
+    "project_id": "swachhtaapp123",
+    "storage_bucket": "swachhtaapp123.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:268830914612:android:3dcc6bcf709bfe52e93261",
-        "android_client_info": {
-          "package_name": "com.example.swachhta_app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "268830914612-7toven0adfqg2bkjieed7cmscb7ktctk.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCQrViEplKr5X5YB7B36sMaDEnxJ2xf1zs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "268830914612-7toven0adfqg2bkjieed7cmscb7ktctk.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:268830914612:android:c39792c997c38d34e93261",
+        "mobilesdk_app_id": "1:973486231842:android:a53eeaac07b5164529557b",
         "android_client_info": {
           "package_name": "com.example.swachhta_app2"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "268830914612-7toven0adfqg2bkjieed7cmscb7ktctk.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCQrViEplKr5X5YB7B36sMaDEnxJ2xf1zs"
+          "current_key": "AIzaSyD2Y900Q_CWilufbUEuAMKZdmfwMuDQO3E"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "268830914612-7toven0adfqg2bkjieed7cmscb7ktctk.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
