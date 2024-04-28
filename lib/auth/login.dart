@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:swachhta_app2/admin/screen/tab_screen_admin.dart';
+import 'package:swachhta_app2/auth/forget_password.dart';
 import 'package:swachhta_app2/auth/register.dart';
 import 'package:swachhta_app2/controller/auth_controller.dart';
 import 'package:swachhta_app2/worker/screen/tabs.dart';
@@ -159,6 +160,24 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 35),
                     loginButton,
                     const SizedBox(height: 15),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPasswordScreen()));
+                      },
+                      child: const Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 65, 57, 57),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -178,8 +197,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15),
                             ),
-                          )
-                        ])
+                          ),
+                        ]),
                   ],
                 ),
               ),

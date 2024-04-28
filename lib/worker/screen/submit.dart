@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:swachhta_app2/worker/utils/app_image_pick.dart';
@@ -13,6 +15,8 @@ class SubmitScreen extends StatefulWidget {
 }
 
 class _SubmitScreenState extends State<SubmitScreen> {
+  FirebaseStorage storage = FirebaseStorage.instance;
+
   File? image;
 
   pickImage(ImageSource source) {
@@ -87,8 +91,30 @@ class _SubmitScreenState extends State<SubmitScreen> {
               height: 20,
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
+              onPressed: () async {
+                String message;
+
+                try {
+                  Reference ref =
+                      FirebaseStorage.instance.ref().child("SubmitImage");
+                  UploadTask uploadTask = ref.putFile(image!);
+
+                  TaskSnapshot taskSnapshot = await Future.value(uploadTask);
+                  var newUrl = await taskSnapshot.ref.getDownloadURL();
+
+                  print("Uploaded");
+                  final collection =
+                      FirebaseFirestore.instance.collection('submitImage');
+
+                  await collection.doc().set({'image': newUrl.toString()});
+                  message = "Successful";
+                  print("ahlf");
+                } catch (_) {
+                  message = "Error";
+                }
+                if (message == "Successful") {
+                  Navigator.of(context).pop();
+                }
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
               child: const Text(

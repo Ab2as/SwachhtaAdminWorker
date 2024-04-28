@@ -161,4 +161,13 @@ class AuthController extends GetxController {
   void signOut() async {
     await firebaseAuth.signOut();
   }
+
+  resetPassword(String email) async {
+    try {
+      await firebaseAuth.sendPasswordResetEmail(email: email);
+      Get.snackbar("Email Sent", "Password Reset Email has been sent");
+    } catch (e) {
+      Get.snackbar("User Not Found", "No user fount for that email");
+    }
+  }
 }
