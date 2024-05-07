@@ -1,9 +1,9 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:swachhta_app2/admin/screen/departmentlist.dart';
+import 'package:swachhta_app2/admin/screen/editProfileA.dart';
 import 'package:swachhta_app2/admin/screen/home_screen_admin.dart';
 import 'package:swachhta_app2/admin/screen/problemlist.dart';
-import 'package:swachhta_app2/worker/screen/EditProfileW.dart';
 
 class TabsScreenAdmin extends StatefulWidget {
   const TabsScreenAdmin({super.key});
@@ -43,7 +43,7 @@ class _TabsScreenAdmin extends State<TabsScreenAdmin> {
     }
 
     if (_selectedPageIndex == 3) {
-      activePage = EditProfileW();
+      activePage = EditProfileA();
       //activePageTitle = 'Profile';
     }
 
