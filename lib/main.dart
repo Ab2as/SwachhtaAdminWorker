@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:swachhta_app2/auth/login.dart';
 import 'package:swachhta_app2/firebase_options.dart';
-import 'package:swachhta_app2/worker/screen/submit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: SubmitScreen(),
+      home: LoginScreen(),
     );
   }
 }

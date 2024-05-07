@@ -177,8 +177,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           onPressed: () {
             // signUp(emailEditingController.text, passwordEditingController.text);
 
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const ProfileScreen()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const ProfileFillScreen()));
             authController.registerUser(userNameEditingController.text,
                 emailEditingController.text, passwordEditingController.text);
           },

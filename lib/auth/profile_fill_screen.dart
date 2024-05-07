@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:swachhta_app2/controller/profile_controller.dart';
 import 'package:swachhta_app2/worker/screen/tabs.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class ProfileFillScreen extends StatefulWidget {
+  const ProfileFillScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileFillScreen> createState() => _ProfileFillScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileFillScreenState extends State<ProfileFillScreen> {
   TextEditingController _fullname = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _pincode = TextEditingController();
@@ -243,30 +243,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => TabsScreen(),
                       ));
-
-                      // try {
-                      //   final collection =
-                      //       FirebaseFirestore.instance.collection('user');
-
-                      //   await collection.doc().set({
-                      //     'name': _fullname.text,
-                      //     'mobileno': _mobileno.text,
-                      //     'address': _address.text,
-                      //     'pincode': _pincode.text,
-                      //     'email': _email.text,
-                      //   });
-                      //   message = "Successful";
-                      // } catch (_) {
-                      //   message = "Error";
-                      // }
-                      // if (message == "Successful") {
-                      //   Navigator.of(context).push(MaterialPageRoute(
-                      //     builder: (context) => TabsScreen(),
-                      //   ));
-                      // } else {
-                      //   ScaffoldMessenger.of(context)
-                      //       .showSnackBar(SnackBar(content: Text(message)));
-                      // }
                     }
                   },
                   child: const Text("Submit"),

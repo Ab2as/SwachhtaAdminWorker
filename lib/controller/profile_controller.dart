@@ -21,7 +21,7 @@ class ProfileController extends GetxController {
           department: department,
         );
 
-        await firestore.collection('profile').doc().set(profile.toJson());
+        await firestore.collection('Workerprofile').doc().set(profile.toJson());
       } else {
         Get.snackbar(
           "Error Uploading Data",

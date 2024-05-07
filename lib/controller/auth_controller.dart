@@ -120,7 +120,7 @@ class AuthController extends GetxController {
             model.User(name: username, email: email, uid: cred.user!.uid);
 
         await firestore
-            .collection('users')
+            .collection('worker')
             .doc(cred.user!.uid)
             .set(user.toJson());
       } else {
