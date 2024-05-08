@@ -217,7 +217,8 @@ class _EditProfileW extends State<EditProfileW> {
                     boxShadow: [
                       BoxShadow(
                           offset: Offset(0, 5),
-                          color: Colors.deepOrange.withOpacity(0.2),
+                          color:
+                              Color.fromARGB(255, 21, 84, 35).withOpacity(0.2),
                           spreadRadius: 5,
                           blurRadius: 10)
                     ]),
@@ -337,7 +338,7 @@ itemProfile(String title, String subtitle, IconData iconData) {
         boxShadow: [
           BoxShadow(
               offset: Offset(0, 5),
-              color: Colors.deepOrange.withOpacity(0.2),
+              color: Color.fromARGB(255, 21, 84, 35).withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10)
         ]),

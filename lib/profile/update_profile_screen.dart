@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class UpdateProfileScreen extends StatefulWidget{
+class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({super.key});
 
   @override
@@ -12,17 +12,16 @@ class UpdateProfileScreen extends StatefulWidget{
 }
 
 class _UpdateProfileScreen extends State<UpdateProfileScreen> {
-
   @override
   Widget build(BuildContext context) {
     //final controller = Get.put(ProfileController());
 
     String? userGender;
 
-
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Profile", style: Theme.of(context).textTheme.headlineMedium),
+        title: Text("Edit Profile",
+            style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -37,7 +36,8 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     height: 120,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage("assets/images/Anurag.jpg"))),
+                        child: const Image(
+                            image: AssetImage("assets/images/Anurag.jpg"))),
                   ),
                   Positioned(
                     bottom: 0,
@@ -45,10 +45,12 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     child: Container(
                       width: 35,
                       height: 35,
-                      decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(100), //color: tPrimaryColor
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(100), //color: tPrimaryColor
                       ),
-                      child: const Icon(LineAwesomeIcons.camera, color: Colors.black, size: 20),
+                      child: const Icon(LineAwesomeIcons.camera,
+                          color: Colors.black, size: 20),
                     ),
                   ),
                 ],
@@ -62,30 +64,31 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     TextFormField(
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
-                          label: Text("Name"), prefixIcon: Icon(LineAwesomeIcons.user)),
+                          label: Text("Name"),
+                          prefixIcon: Icon(LineAwesomeIcons.user)),
                     ),
                     //const SizedBox(height: tFormHeight - 20),
                     const SizedBox(height: 8),
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                          label: Text("Email"), prefixIcon: Icon(LineAwesomeIcons.envelope_1)),
+                          label: Text("Email"),
+                          prefixIcon: Icon(LineAwesomeIcons.envelope_1)),
                     ),
                     //const SizedBox(height: tFormHeight - 20),
                     const SizedBox(height: 8),
                     TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
-                          label: Text("Phone No"), prefixIcon: Icon(LineAwesomeIcons.phone)),
+                          label: Text("Phone No"),
+                          prefixIcon: Icon(LineAwesomeIcons.phone)),
                     ),
                     //const SizedBox(height: tFormHeight - 20),
                     const SizedBox(height: 8),
                     TextFormField(
-
                       decoration: const InputDecoration(
                         label: Text("Address"),
                         prefixIcon: Icon(Icons.location_on),
-
                       ),
                     ),
                     //const SizedBox(height: tFormHeight),
@@ -99,14 +102,14 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     //   ),
                     // ),
 
-
                     DropdownButtonFormField(
                         hint: const Text('Gender'),
-                        icon: Icon(userGender == 'Male'
-                            ? Icons.male_rounded
-                            : userGender == 'Female'
-                            ? Icons.female_rounded
-                            : Icons.transgender_sharp,
+                        icon: Icon(
+                          userGender == 'Male'
+                              ? Icons.male_rounded
+                              : userGender == 'Female'
+                                  ? Icons.female_rounded
+                                  : Icons.transgender_sharp,
                         ),
                         value: userGender,
                         onChanged: (String? newValue) {
@@ -114,15 +117,13 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                             userGender = newValue!;
                           });
                         },
-
                         items: <String>['Male', 'Female', 'Other']
                             .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
-                        }).toList() ),
-
+                        }).toList()),
 
                     const SizedBox(height: 10),
 
@@ -130,12 +131,14 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () => Get.to(() => const UpdateProfileScreen()),
+                        onPressed: () =>
+                            Get.to(() => const UpdateProfileScreen()),
                         style: ElevatedButton.styleFrom(
                             //backgroundColor: tPrimaryColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Update", //style: TextStyle(color: tDarkColor)
+                        child: const Text(
+                          "Update", //style: TextStyle(color: tDarkColor)
                         ),
                       ),
                     ),
@@ -146,11 +149,11 @@ class _UpdateProfileScreen extends State<UpdateProfileScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent.withOpacity(0.1),
+                              backgroundColor:
+                                  Colors.redAccent.withOpacity(0.1),
                               elevation: 0,
                               foregroundColor: Colors.red,
                               shape: const StadiumBorder(),

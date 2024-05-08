@@ -127,7 +127,7 @@ class _EditProfileA extends State<EditProfileA> {
                           builder: (context) => EditProfileAdmin()));
                     },
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 167, 128, 143)),
+                        backgroundColor: Color.fromARGB(255, 75, 192, 108)),
                     child: const Text(
                       "Edit Profile",
                       style: TextStyle(
@@ -143,7 +143,7 @@ class _EditProfileA extends State<EditProfileA> {
                             builder: (context) => LoginScreen()));
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 167, 128, 143)),
+                          backgroundColor: Color.fromARGB(255, 75, 192, 108)),
                       child: const Text(
                         "Logout",
                         style: TextStyle(
@@ -169,7 +169,7 @@ itemProfile(String title, String subtitle, IconData iconData) {
         boxShadow: [
           BoxShadow(
               offset: Offset(0, 5),
-              color: Colors.deepOrange.withOpacity(0.2),
+              color: Color.fromARGB(255, 21, 84, 35).withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10)
         ]),
